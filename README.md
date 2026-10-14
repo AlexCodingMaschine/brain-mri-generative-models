@@ -36,18 +36,26 @@ Training was carried out on CPU. All hyperparameters are collected in `config.py
 
 ```
 config.py                 central configuration (paths, hyperparameters)
+download_dataset.py       dataset download via kagglehub
+analyze_dataset.py        image statistics (Appendix B of the report)
+test_pipeline.py          check of the data pipeline and noise
 src/dataset.py            dataset class (grayscale, 64×64, [0, 1])
+src/noise.py              degradation functions (Gaussian, salt-and-pepper, blur)
 src/models_gan.py         DCGAN generator and discriminator
 src/models_vae.py         VAE and loss function
 src/models_diffusion.py   simplified DDPM (noise schedule, U-Net)
-analyze_dataset.py        image statistics (Appendix B of the report)
+src/experiment.py         helper functions for the VAE experiments
+src/classifier.py         CNN classifier
 train_gan.py              GAN Version 1
 train_gan_v2.py           GAN Version 2 (label smoothing 0.9)
 check_gan_losses.py       loss measurement on the saved final GAN models
 compute_fid.py            FID evaluation of both GAN versions
+train_vae.py              VAE training (single configuration)
+run_vae_experiments.py    VAE experiment series
+compare_latent_space.py   latent-space tests (random samples, interpolation)
 train_diffusion.py        diffusion model training
-<VAE-Skript>.py           VAE experiment series        (Dateiname anpassen)
-<Klassifikator-Skript>.py data augmentation experiment (Dateiname anpassen)
+generate_synthetic.py     synthetic images for the augmentation experiment
+train_classifier.py       classifier baseline vs. augmented
 ```
 
 ## Usage (examples)
@@ -59,7 +67,11 @@ python train_gan_v2.py
 python check_gan_losses.py          # Version 1
 python check_gan_losses.py --v2     # Version 2
 python compute_fid.py
+python run_vae_experiments.py
+python compare_latent_space.py
 python train_diffusion.py
+python generate_synthetic.py
+python train_classifier.py
 ```
 
 Outputs (sample images, checkpoints, CSV results) are written to `outputs/`.
