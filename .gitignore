@@ -1,0 +1,26 @@
+# Virtuelle Umgebung
+venv/
+.venv/
+
+# Datensatz (nicht hochladen)
+data/
+
+# Trainingsausgaben, Checkpoints, große Dateien
+outputs/
+*.pt
+*.pth
+*.ckpt
+
+# Python-Cache
+__pycache__/
+*.pyc
+
+# Editor / System
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Bericht und Kursunterlagen (nicht öffentlich hochladen)
+*.docx
+*.pdf
